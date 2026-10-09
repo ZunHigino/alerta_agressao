@@ -10,14 +10,14 @@ from folium.plugins import LocateControl
 # 1. CONFIGURAÇÕES E PONTO DE PARTIDA (PERNAMBUCO)
 # ==============================================================================
 # Coordenadas do usuário / ponto de partida (Ex: Derby, Recife - PE)
-# Você pode alterar para qualquer coordenada desejada em Pernambuco:
+# Pode alterar para qualquer coordenada em Pernambuco:
 PONTO_ORIGEM = [-8.0560, -34.8980]  # [Latitude, Longitude]
 
 
 # ==============================================================================
 # 2. BASE DE DELEGACIAS E ZONAS DE RISCO
 # ==============================================================================
-# Carrega do arquivo do projeto se existir, ou usa a base embutida como fallback
+# Carrega do arquivo do projeto se existir
 def carregar_delegacias():
     caminho_json = Path("data/delegacias_pe.json")
     if caminho_json.exists():
@@ -25,7 +25,7 @@ def carregar_delegacias():
         with open(caminho_json, "r", encoding="utf-8") as f:
             return json.load(f)
 
-    # Base essencial de delegacias de Pernambuco (fallback)
+    # Base essencial de delegacias de Pernambuco
     return [
         {
             "nome": "01ª Delegacia de Santo Amaro",
@@ -149,10 +149,10 @@ def gerar_mapa_rota_segura(origem):
     delegacia_alvo = encontrar_delegacia_mais_proxima(origem, delegacias)
     destino = [delegacia_alvo["latitude"], delegacia_alvo["longitude"]]
 
-    print(f"🎯 Ponto de Partida: {origem}")
-    print(f"🏛️ Delegacia Mais Próxima: {delegacia_alvo['nome']}")
-    print(f"📍 Endereço: {delegacia_alvo['endereco']}")
-    print(f"📞 Telefone: {delegacia_alvo['telefone']}")
+    print(f"Ponto de Partida: {origem}")
+    print(f"Delegacia Mais Próxima: {delegacia_alvo['nome']}")
+    print(f"Endereço: {delegacia_alvo['endereco']}")
+    print(f"Telefone: {delegacia_alvo['telefone']}")
 
     # Calcula a rota pelas ruas
     dados_rota = obter_rota_viaria(origem, destino)
@@ -185,7 +185,7 @@ def gerar_mapa_rota_segura(origem):
         location=origem,
         tooltip="Ponto de Partida (Você)",
         popup=folium.Popup(
-            f"<b>📍 Sua Posição</b><br>Coordenadas: {origem[0]:.4f}, {origem[1]:.4f}",
+            f"<b>Sua Posição</b><br>Coordenadas: {origem[0]:.4f}, {origem[1]:.4f}",
             max_width=250
         ),
         icon=folium.Icon(color="green", icon="user", prefix="fa")
@@ -199,7 +199,7 @@ def gerar_mapa_rota_segura(origem):
         popup=folium.Popup(
             f"""
             <div style="font-family: Arial; min-width: 220px;">
-                <h4 style="color: #0D47A1; margin: 0 0 5px 0;">🏛️ {delegacia_alvo['nome']}</h4>
+                <h4 style="color: #0D47A1; margin: 0 0 5px 0;">{delegacia_alvo['nome']}</h4>
                 <p style="margin: 3px 0; font-size: 12px;"><b>Tipo:</b> {delegacia_alvo.get('tipo', 'Polícia')}</p>
                 <p style="margin: 3px 0; font-size: 12px;"><b>Plantão:</b> <span style="color: green; font-weight: bold;">{status_plantao}</span></p>
                 <p style="margin: 3px 0; font-size: 12px;"><b>Endereço:</b> {delegacia_alvo['endereco']}</p>
@@ -220,7 +220,7 @@ def gerar_mapa_rota_segura(origem):
             fill=True,
             fill_color="#D32F2F",
             fill_opacity=0.25,
-            tooltip=f"⚠️ {z['nome']} (Área Monitorada)"
+            tooltip=f"{z['nome']} (Área Monitorada)"
         ).add_to(mapa)
 
     # 5. Traçado da Rota Segura (PolyLine Verde Protegido)
@@ -229,7 +229,7 @@ def gerar_mapa_rota_segura(origem):
         color="#00897B",
         weight=6,
         opacity=0.9,
-        tooltip=f"🛡️ Rota Segura: {dist_km:.2f} km (~{tempo_min} min)"
+        tooltip=f"Rota Segura: {dist_km:.2f} km (~{tempo_min} min)"
     ).add_to(mapa)
 
     # 6. Painel Flutuante com Métricas e Botões de Emergência
@@ -249,7 +249,7 @@ def gerar_mapa_rota_segura(origem):
         border-left: 6px solid #00897B;
     ">
         <h4 style="margin: 0 0 6px 0; color: #1A237E; display: flex; justify-content: space-between;">
-            <span>🛡️ Rota Segura PE</span>
+            <span>Rota Segura PE</span>
             <span style="font-size: 12px; background: #E8F5E9; color: #2E7D32; padding: 2px 6px; border-radius: 4px;">Ativo</span>
         </h4>
         <div style="font-size: 13px; color: #333; line-height: 1.4; margin-bottom: 8px;">
@@ -280,6 +280,6 @@ if __name__ == "__main__":
     # Salva o arquivo HTML e abre no navegador
     nome_arquivo = "mapa_rota_segura.html"
     mapa_gerado.save(nome_arquivo)
-    print(f"✅ Mapa interativo salvo com sucesso em: {nome_arquivo}")
+    print(f"Mapa interativo salvo com sucesso em: {nome_arquivo}")
 
     webbrowser.open("https://www.bing.com/maps")

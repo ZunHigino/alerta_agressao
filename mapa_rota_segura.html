@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ddc845a795a6e321b3f7bc495686fd3b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.css"/>
+</head>
+<body>
+    
+    
+    <div style="
+        position: fixed;
+        bottom: 25px;
+        left: 25px;
+        width: 310px;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(6px);
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        padding: 14px;
+        font-family: Arial, sans-serif;
+        z-index: 1000;
+        border-left: 6px solid #00897B;
+    ">
+        <h4 style="margin: 0 0 6px 0; color: #1A237E; display: flex; justify-content: space-between;">
+            <span>Rota Segura PE</span>
+            <span style="font-size: 12px; background: #E8F5E9; color: #2E7D32; padding: 2px 6px; border-radius: 4px;">Ativo</span>
+        </h4>
+        <div style="font-size: 13px; color: #333; line-height: 1.4; margin-bottom: 8px;">
+            <b>Destino:</b> 1ª Delegacia da Mulher (DEAM Recife)<br>
+            <b>Distância:</b> 4.32 km | <b>Tempo estimado:</b> ~6 min
+        </div>
+        <div style="border-top: 1px solid #ddd; padding-top: 8px;">
+            <span style="font-size: 11px; font-weight: bold; color: #555;">DISCAGEM RÁPIDA DE EMERGÊNCIA:</span>
+            <div style="display: flex; gap: 6px; margin-top: 5px;">
+                <a href="tel:190" style="flex:1; text-align:center; background:#D32F2F; color:white; padding:5px 0; border-radius:4px; text-decoration:none; font-weight:bold; font-size:12px;">190 PM</a>
+                <a href="tel:180" style="flex:1; text-align:center; background:#7B1FA2; color:white; padding:5px 0; border-radius:4px; text-decoration:none; font-weight:bold; font-size:12px;">180 Mulher</a>
+                <a href="tel:197" style="flex:1; text-align:center; background:#1976D2; color:white; padding:5px 0; border-radius:4px; text-decoration:none; font-weight:bold; font-size:12px;">197 Civil</a>
+            </div>
+        </div>
+    </div>
+    
+    
+            <div class="folium-map" id="map_ddc845a795a6e321b3f7bc495686fd3b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ddc845a795a6e321b3f7bc495686fd3b = L.map(
+                "map_ddc845a795a6e321b3f7bc495686fd3b",
+                {
+                    center: [-8.0536, -34.89325],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_ddc845a795a6e321b3f7bc495686fd3b);
+
+            
+
+        
+    
+            var tile_layer_7fe7197add3d9ad97299df5c5499b45e = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7fe7197add3d9ad97299df5c5499b45e.addTo(map_ddc845a795a6e321b3f7bc495686fd3b);
+        
+    
+            var locate_control_ebdfaa60bab72e7324478a7521aaa496 = L.control.locate(
+                {"drawMarker": true, "flyTo": true, "keepCurrentZoomLevel": true, "strings": {"popup": "Voc\u00ea est\u00e1 aqui", "title": "Localizar minha posi\u00e7\u00e3o atual"}}
+            ).addTo(map_ddc845a795a6e321b3f7bc495686fd3b);
+            
+        
+    
+            var marker_ab0f7dcaf92e52eae64a0974c23d2d4c = L.marker(
+                [-8.056, -34.898],
+                {
+}
+            ).addTo(map_ddc845a795a6e321b3f7bc495686fd3b);
+        
+    
+            var icon_fcd46fcc42d00875c5798db55f0615c7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6362db899a368dee8728bf70638d0695 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_588492589ea005bfe9552bd3975acb46 = $(`<div id="html_588492589ea005bfe9552bd3975acb46" style="width: 100.0%; height: 100.0%;"><b>Sua Posição</b><br>Coordenadas: -8.0560, -34.8980</div>`)[0];
+                popup_6362db899a368dee8728bf70638d0695.setContent(html_588492589ea005bfe9552bd3975acb46);
+            
+        
+
+        marker_ab0f7dcaf92e52eae64a0974c23d2d4c.bindPopup(popup_6362db899a368dee8728bf70638d0695)
+        ;
+
+        
+    
+    
+            marker_ab0f7dcaf92e52eae64a0974c23d2d4c.bindTooltip(
+                `<div>
+                     Ponto de Partida (Você)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ab0f7dcaf92e52eae64a0974c23d2d4c.setIcon(icon_fcd46fcc42d00875c5798db55f0615c7);
+            
+    
+            var marker_28cc249f1052d945c4a6b17cfe5e8c58 = L.marker(
+                [-8.0512, -34.8885],
+                {
+}
+            ).addTo(map_ddc845a795a6e321b3f7bc495686fd3b);
+        
+    
+            var icon_28d6c3bb1f0ebfcc9d95ef0c94b1d971 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "shield",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ea7026567c5a0d6c9bbacdd2a7d9eeac = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0dc15792a1c5196f0a03fff2acc8f3da = $(`<div id="html_0dc15792a1c5196f0a03fff2acc8f3da" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; min-width: 220px;">                 <h4 style="color: #0D47A1; margin: 0 0 5px 0;">1ª Delegacia da Mulher (DEAM Recife)</h4>                 <p style="margin: 3px 0; font-size: 12px;"><b>Tipo:</b> Delegacia da Mulher</p>                 <p style="margin: 3px 0; font-size: 12px;"><b>Plantão:</b> <span style="color: green; font-weight: bold;">24 Horas</span></p>                 <p style="margin: 3px 0; font-size: 12px;"><b>Endereço:</b> Praça do Campo Santo, s/n - Santo Amaro, Recife - PE</p>                 <p style="margin: 3px 0; font-size: 12px;"><b>Telefone:</b> <a href="tel:(81) 3184-3352">(81) 3184-3352</a></p>             </div>             </div>`)[0];
+                popup_ea7026567c5a0d6c9bbacdd2a7d9eeac.setContent(html_0dc15792a1c5196f0a03fff2acc8f3da);
+            
+        
+
+        marker_28cc249f1052d945c4a6b17cfe5e8c58.bindPopup(popup_ea7026567c5a0d6c9bbacdd2a7d9eeac)
+        ;
+
+        
+    
+    
+            marker_28cc249f1052d945c4a6b17cfe5e8c58.bindTooltip(
+                `<div>
+                     Destino Seguro: 1ª Delegacia da Mulher (DEAM Recife)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_28cc249f1052d945c4a6b17cfe5e8c58.setIcon(icon_28d6c3bb1f0ebfcc9d95ef0c94b1d971);
+            
+    
+            var circle_f739caf3d29158eb55f1b386ff2cd1e1 = L.circle(
+                [-8.0535, -34.891],
+                {"bubblingMouseEvents": true, "color": "#D32F2F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D32F2F", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 180, "stroke": true, "weight": 3}
+            ).addTo(map_ddc845a795a6e321b3f7bc495686fd3b);
+        
+    
+            circle_f739caf3d29158eb55f1b386ff2cd1e1.bindTooltip(
+                `<div>
+                     Trecho Crítico / Baixa Iluminação (Área Monitorada)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_c7a0bb58e26f8c111902df45c64d8c04 = L.polyline(
+                [[-8.055991, -34.898078], [-8.056076, -34.898088], [-8.056459, -34.8981], [-8.056568, -34.898103], [-8.056645, -34.898106], [-8.056707, -34.898108], [-8.056778, -34.89811], [-8.057267, -34.898096], [-8.057348, -34.898094], [-8.057462, -34.898093], [-8.058012, -34.898087], [-8.058725, -34.898079], [-8.05884, -34.898078], [-8.058915, -34.898076], [-8.059397, -34.898034], [-8.059462, -34.898059], [-8.059894, -34.898093], [-8.059997, -34.898122], [-8.060378, -34.898078], [-8.060795, -34.89803], [-8.062132, -34.897874], [-8.062299, -34.897856], [-8.062455, -34.897834], [-8.062618, -34.897819], [-8.063143, -34.89777], [-8.063651, -34.897732], [-8.064201, -34.897673], [-8.064736, -34.897599], [-8.064832, -34.897602], [-8.065003, -34.897638], [-8.065132, -34.897674], [-8.065514, -34.897847], [-8.065835, -34.898003], [-8.065955, -34.898054], [-8.066161, -34.898086], [-8.066275, -34.898091], [-8.066395, -34.898088], [-8.066452, -34.898072], [-8.066494, -34.898055], [-8.066539, -34.898029], [-8.066565, -34.897994], [-8.066583, -34.897948], [-8.066603, -34.897778], [-8.066615, -34.8977], [-8.066616, -34.897691], [-8.066698, -34.897149], [-8.066704, -34.897122], [-8.066714, -34.89709], [-8.066759, -34.896564], [-8.06696, -34.896105], [-8.067007, -34.896004], [-8.067035, -34.895941], [-8.067028, -34.895891], [-8.067017, -34.895877], [-8.066946, -34.89581], [-8.066885, -34.895752], [-8.066753, -34.895633], [-8.066706, -34.895584], [-8.066687, -34.895567], [-8.066643, -34.895568], [-8.066602, -34.895572], [-8.066566, -34.895582], [-8.066532, -34.895598], [-8.066498, -34.895629], [-8.066447, -34.89568], [-8.066397, -34.895749], [-8.066353, -34.895799], [-8.066254, -34.896006], [-8.066239, -34.896038], [-8.066187, -34.896143], [-8.066122, -34.896275], [-8.065975, -34.896574], [-8.065921, -34.896672], [-8.065843, -34.896806], [-8.065785, -34.896845], [-8.065689, -34.89688], [-8.06515, -34.896925], [-8.064436, -34.896993], [-8.063994, -34.897039], [-8.063723, -34.897068], [-8.063692, -34.897073], [-8.06262, -34.897207], [-8.062457, -34.897224], [-8.062093, -34.897267], [-8.060394, -34.897462], [-8.060238, -34.897479], [-8.060136, -34.897493], [-8.059074, -34.897619], [-8.058865, -34.897643], [-8.058766, -34.897642], [-8.057463, -34.897634], [-8.057289, -34.897627], [-8.057146, -34.897622], [-8.056793, -34.897614], [-8.056755, -34.897612], [-8.056636, -34.897604], [-8.056556, -34.8976], [-8.056481, -34.8976], [-8.056366, -34.897598], [-8.056243, -34.897596], [-8.055989, -34.897592], [-8.05591, -34.897581], [-8.055881, -34.897576], [-8.055697, -34.897556], [-8.055313, -34.897429], [-8.055228, -34.89739], [-8.055147, -34.897349], [-8.055016, -34.897282], [-8.054979, -34.897257], [-8.054862, -34.897177], [-8.054464, -34.896867], [-8.053881, -34.89643], [-8.053786, -34.896369], [-8.053772, -34.896359], [-8.053637, -34.896256], [-8.053063, -34.895848], [-8.05269, -34.895582], [-8.052679, -34.895576], [-8.052558, -34.895493], [-8.05252, -34.89547], [-8.052404, -34.895302], [-8.052325, -34.895154], [-8.052095, -34.894743], [-8.052057, -34.894654], [-8.051992, -34.894485], [-8.051934, -34.894354], [-8.0519, -34.894261], [-8.051871, -34.894155], [-8.051854, -34.894058], [-8.051844, -34.893976], [-8.051844, -34.893961], [-8.051844, -34.893896], [-8.051862, -34.893791], [-8.051926, -34.893582], [-8.051958, -34.89349], [-8.051988, -34.893402], [-8.052051, -34.89322], [-8.052252, -34.892638], [-8.052478, -34.89237], [-8.052579, -34.892298], [-8.05263, -34.892122], [-8.052643, -34.892078], [-8.052792, -34.891564], [-8.052899, -34.891125], [-8.053073, -34.890413], [-8.053095, -34.89032], [-8.053173, -34.890041], [-8.053197, -34.889955], [-8.053447, -34.889909], [-8.053855, -34.889823], [-8.053766, -34.889286], [-8.05376, -34.889254], [-8.052968, -34.888973], [-8.052266, -34.888714], [-8.05212, -34.88866], [-8.051147, -34.888346], [-8.051096, -34.888445]],
+                {"bubblingMouseEvents": true, "color": "#00897B", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#00897B", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_ddc845a795a6e321b3f7bc495686fd3b);
+        
+    
+            poly_line_c7a0bb58e26f8c111902df45c64d8c04.bindTooltip(
+                `<div>
+                     Rota Segura: 4.32 km (~6 min)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
