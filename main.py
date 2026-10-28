@@ -10,7 +10,7 @@ Funcionalidades:
 
 Dependências:  pip install tkintermapview requests
 Gerar .exe:    pip install pyinstaller
-               pyinstaller --onefile --noconsole --collect-all tkintermapview --name RotaSegurePE rota_segura.py
+               pyinstaller --onefile --noconsole --collect-all tkintermapview --name RotaSegurePE main.py
 """
 import json
 import math
